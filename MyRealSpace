@@ -1,0 +1,73 @@
+<!-- templates/register.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+    <form method="POST">
+        Username: <input type="text" name="username"><br>
+        Email: <input type="email" name="email"><br>
+        Phone: <input type="text" name="phone"><br>
+        Password: <input type="password" name="password"><br>
+        <!-- Add file uploads for facial/voice/full body -->
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
+
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Login</title></head>
+<body>
+    <form method="POST">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+<!-- templates/wall.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Wall</title></head>
+<body>
+    <h1>Your Wall</h1>
+    {% for post in posts %}
+        <div>
+            <p>{{ post[2] }} by {{ post[5] }} (Safe Score: {{ post[6] }}) #{{ post[3] }}</p>
+            <p>Views: {{ post[5] }} | Time Spent: {{ post[6] }}s</p>
+        </div>
+    {% endfor %}
+    <form method="POST" action="/post">
+        Content: <textarea name="content"></textarea><br>
+        Tag: <input type="text" name="tag"><br>
+        <input type="submit" value="Post">
+    </form>
+</body>
+</html>
+
+<!-- templates/profile.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Profile</title></head>
+<body>
+    <h1>{{ user[1] }}'s Profile</h1>
+    <p>Body Type: {{ user[8] }}</p>
+    <p>Safe Score: {{ user[10] }}</p>
+    <p>Profile Views: {{ metrics[1] }} | Time Spent: {{ metrics[2] }}s</p>
+    <!-- Add customization options, friends list, etc. -->
+</body>
+</html>
+
+<!-- templates/dating.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Dating</title></head>
+<body>
+    <h1>Dating Profiles</h1>
+    {% for user in users %}
+        <p>{{ user[0] }} - Body: {{ user[1] }} - Safe: {{ user[2] }}</p>
+    {% endfor %}
+</body>
+</html>
